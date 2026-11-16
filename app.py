@@ -13,10 +13,12 @@ st.set_page_config(
 
 def connect_db():
     return mysql.connector.connect(
-        host="localhost",
-        user="shark_user",
-        password=os.getenv("DB_PASSWORD"),
-        database="miss_shark"
+        host=st.secrets["DB_HOST"],
+        port=int(st.secrets["DB_PORT"]),
+        user=st.secrets["DB_USER"],
+        password=st.secrets["DB_PASSWORD"],
+        database=st.secrets["DB_NAME"],
+    
     )
 
 st.title("🔎 Miss Shark's Mystery Files")
